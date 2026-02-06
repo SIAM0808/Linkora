@@ -641,6 +641,6 @@ If you have any questions or need help, please open an issue or contact me direc
 
 **⭐ Star this repository if you find it helpful!**
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by Fahad Hasan Siam
 
 </div>
