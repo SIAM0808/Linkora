@@ -17,72 +17,83 @@ import RightBar from "./components/rightbar/RightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import { useContext } from "react";
-import { DarkModeContext } from "./context/DarkmodeContext";
+import { DarkModeContext } from "./context/darkmodeContext";
 import { AuthContext } from './context/authContext';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+
 
 
 function App() {
-  
-  const {currentUser} = useContext(AuthContext);
+
+  const { currentUser } = useContext(AuthContext);
+  // const currentUser = true;
   const { darkMode } = useContext(DarkModeContext);
 
-  const Layout = ()=>{
-    return(
-      <div className={`theme-${darkMode ? "dark" : "light"}`}>
-        <NavBar/>
-        <div style={{display: "flex"}}>
-          <LeftBar/>
-          <div style={{flex: 6}}>
-          <Outlet/>
+  const Layout = () => {
+
+    return (
+      <QueryClientProvider client={queryClient}>
+        <div className={`theme-${darkMode ? "dark" : "light"}`}>
+          <NavBar />
+          <div style={{ display: "flex" }}>
+            <LeftBar />
+            <div style={{ flex: 6 }}>
+              <Outlet />
+            </div>
+            <RightBar />
           </div>
-          <RightBar/>
         </div>
-      </div>
+      </QueryClientProvider>
     );
   };
 
-  const ProtectedRoute = ({children}) =>{
-    if(!currentUser){
-      return <Navigate to="/login"/>;
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
     }
     return children;
   };
 
 
   const router = createBrowserRouter([
-  {
+    {
       path: "/",
-      element:(
+      element: (
         <ProtectedRoute>
-          <Layout/>
+          <Layout />
         </ProtectedRoute>
       ),
       children: [
         {
           path: "/",
-          element: <Home/>,
+          element: <Home />,
         },
         {
           path: "/profile/:id",
-          element: <Profile/>
+          element: <Profile />
         }
       ]
-  },
-  {
-    path: "/login",
-    element: <Login/>,
-  },
-  {
-    path: "/register",
-    element: <Register/>,
-  },
-  
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+
   ]);
 
   return (
-   <div>
-      <RouterProvider router={router}/>
-   </div>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   );
 }
 

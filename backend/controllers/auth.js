@@ -54,8 +54,6 @@ export const register = (req, res) =>{
 
 
 
-
-
 export const logout = (req, res) =>{
     res.clearCookie("access_token", {
         secure: true,

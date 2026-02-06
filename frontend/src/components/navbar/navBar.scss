@@ -32,12 +32,14 @@
         border: 1px solid themed("border");
         border-radius: 5px;
         padding: 5px;
+        position: relative;
 
         input {
           border: none;
           width: 500px;
           background-color: transparent;
           color: themed("textColor");
+          outline: none;
 
           @include mobile{
             display: none;
@@ -45,6 +47,63 @@
 
           @include tablet{
             width: 200px;
+          }
+        }
+
+        .searchResults {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: themed("bg");
+          border: 1px solid themed("border");
+          border-radius: 0 0 8px 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          max-height: 300px;
+          overflow-y: auto;
+          z-index: 1001;
+          margin-top: 5px;
+
+          .searchItem {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+              background-color: themed("bgSoft");
+            }
+
+            img {
+              width: 36px;
+              height: 36px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            .searchItemInfo {
+              display: flex;
+              flex-direction: column;
+
+              .name {
+                font-size: 14px;
+                font-weight: 500;
+              }
+
+              .username {
+                font-size: 12px;
+                color: gray;
+              }
+            }
+          }
+
+          .noResults {
+            padding: 12px;
+            text-align: center;
+            color: gray;
+            font-size: 14px;
           }
         }
       }
@@ -64,6 +123,7 @@
         align-items: center;
         gap: 10px;
         font-weight: 500;
+        position: relative;
 
         @include tablet{
           display: none;
@@ -77,6 +137,55 @@
         }
 
         span {
+        }
+
+        .userMenu {
+          position: absolute;
+          top: 50px;
+          right: 0;
+          background-color: themed("bg");
+          border: 1px solid themed("border");
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          min-width: 200px;
+          padding: 8px 0;
+          z-index: 1000;
+
+          hr {
+            border: none;
+            border-top: 1px solid themed("border");
+            margin: 8px 0;
+          }
+
+          .menuItem {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+              background-color: themed("bgSoft");
+            }
+
+            svg {
+              font-size: 20px;
+            }
+
+            span {
+              font-size: 14px;
+              font-weight: 400;
+            }
+
+            &.danger {
+              color: #d32f2f;
+
+              &:hover {
+                background-color: rgba(211, 47, 47, 0.08);
+              }
+            }
+          }
         }
       }
     }

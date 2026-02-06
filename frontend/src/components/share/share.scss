@@ -1,0 +1,179 @@
+@import "../../style.scss";
+
+.share {
+  @include themify($themes) {
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    border-radius: 20px;
+    background-color: themed("bg");
+    color: themed("textColor");
+    margin-bottom: 20px;
+
+    .container {
+      padding: 20px;
+      .top {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        
+        .left {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          flex: 1;
+        }
+        
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        input {
+          border: none;
+          outline: none;
+          padding: 20px 10px;
+          background-color: transparent;
+          width: 100%;
+          color: themed("textColor");
+        }
+      }
+
+      .locationInput {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        margin: 10px 0;
+        border: 1px solid themed("border");
+        border-radius: 8px;
+        background-color: themed("bgSoft");
+
+        input {
+          border: none;
+          outline: none;
+          flex: 1;
+          background-color: transparent;
+          color: themed("textColor");
+          font-size: 13px;
+        }
+      }
+
+      .taggedChips {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        padding: 8px 0;
+
+        .chip {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          background-color: #5271ff20;
+          color: #5271ff;
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+
+      hr {
+        margin: 20px 0px;
+        border: none;
+        height: 0.5px;
+        background-color: themed("border");
+      }
+
+      .bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .left {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+
+          .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+
+            img {
+              height: 20px;
+            }
+
+            span {
+              font-size: 12px;
+              color: gray;
+            }
+          }
+
+          .tagDropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background-color: themed("bg");
+            border: 1px solid themed("border");
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 100;
+            margin-bottom: 8px;
+
+            .tagItem {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              padding: 8px 12px;
+              cursor: pointer;
+              transition: background-color 0.2s;
+
+              &:hover {
+                background-color: themed("bgSoft");
+              }
+
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+
+              span {
+                font-size: 13px;
+                color: themed("textColor");
+              }
+
+              &.noFriends {
+                cursor: default;
+                color: gray;
+                font-size: 13px;
+                justify-content: center;
+                &:hover {
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+        .right {
+          button {
+            border: none;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+            background-color: #5271ff;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  }
+}
