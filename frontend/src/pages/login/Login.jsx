@@ -30,8 +30,8 @@ const Login = () => {
     return <div className="login">
         <div className="card">
             <div className="left">
-                <h1>Hello World</h1>
-                <p>Write something
+                <h1>Linkora</h1>
+                <p>Connect with friends and the world around you on Linkora.
                 </p>
                 <span>Haven't account?</span>
                 <Link to="/register">
